@@ -29,7 +29,7 @@ def is_package_installed_pip(package_name):
 def install_python_37():
     subprocess.run(['sudo', 'add-apt-repository', 'ppa:deadsnakes/ppa'])
     subprocess.run(['sudo', 'apt-get', 'update'])
-    subprocess.run(['sudo', 'apt-get', 'install', 'python3.7'])
+    subprocess.run(['sudo', 'apt-get', 'install', 'python3.7-venv'])
 
 def install_starting_packages():
 
