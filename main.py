@@ -30,9 +30,9 @@ def install_python_37():
     # Add the deadsnakes PPA
     subprocess.run(['sudo', 'add-apt-repository', 'ppa:deadsnakes/ppa'])
     # Update package information
-    subprocess.run(['sudo', 'apt-get', 'update'])
+    subprocess.run(['sudo', 'apt-get', 'update', '-y'])
     # Install Python 3.7
-    subprocess.run(['sudo', 'apt-get', 'install', 'python3.7'])
+    subprocess.run(['sudo', 'apt-get', 'install', '-y', 'python3.7'])
 
 def install_starting_packages():
 
@@ -52,7 +52,7 @@ def install_starting_packages():
 
     # Check if Flask is installed
     if not is_package_installed_pip('Flask'):
-        subprocess.call(['python3', '-m', 'pip', 'install', 'flask[async]'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        subprocess.call(['python3', '-m', 'pip', 'install', '-y', 'flask[async]'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         #subprocess.call(['python3', '-m', 'pip', 'install', 'flask[async]'])
         logging.info("Installed Flask.")
     else:
@@ -60,7 +60,7 @@ def install_starting_packages():
 
     # Check if gir1.2-webkit2-4.0 is installed
     if not is_package_installed('gir1.2-webkit2-4.0'):
-        subprocess.call(['sudo', 'apt-get', 'install', 'gir1.2-webkit2-4.0'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        subprocess.call(['sudo', 'apt-get', 'install', '-y', 'gir1.2-webkit2-4.0'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         #subprocess.call(['sudo', 'apt-get', 'install', 'gir1.2-webkit2-4.0'])
         logging.info("Installed gir1.2-webkit2-4.0.")
     else:
