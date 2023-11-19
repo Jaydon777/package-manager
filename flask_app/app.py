@@ -1,10 +1,9 @@
-# app.py
 from flask import Flask, render_template, request, redirect, url_for, session, after_this_request
 import time
 import os
 import subprocess
 
-app = Flask(__name__)
+app = Flask(_name_)
 app.secret_key = 'your_secret_key' 
 
 log_content = []
@@ -24,7 +23,6 @@ def perform_cv_functionality(both_one):
         for dependency in dependencies:
             install_command = ["pip3", "install", dependency]
             subprocess.run(install_command, check=True)
-            # Update the progress
             time.sleep(1)
             if both_one == 'both':
                 installation_progress += 8.33333
@@ -52,9 +50,11 @@ def perform_nlp_functionality(both_one):
 
     try:
         for dependency in dependencies:
-            install_command = ["pip3", "install", dependency]
+            if dependency == 'torch':
+                install_command = ['pip3', 'install', '--no-cache-dir', 'torch']
+            else:
+                install_command = ["pip3", "install", dependency]
             subprocess.run(install_command, check=True)
-            # Update the progress
             time.sleep(1)
             if(both_one == 'both'):
                 installation_progress += 8.33333
@@ -124,5 +124,5 @@ def manual_shutdown():
         os._exit(0)  # Terminate the process
         return 'Process terminated.'
 
-if __name__ == '__main__':
-    app.run(debug=True, threaded=True)
+if _name_ == '_main_':
+    app.run(debug=True, threaded=True)
