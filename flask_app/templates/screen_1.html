@@ -1,0 +1,26 @@
+<!-- templates/screen_1.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Package Installer for Jetson Nano</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/screen_1.css') }}">
+    <script src="https://kit.fontawesome.com/928fde7a55.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <i class="fa-solid fa-truck-fast icon fa-5x"></i>
+        <h1>Package Installer for Jetson Nano</h1>
+        <p>This package installer is to install required libraries for a specific task so that the SOM
+            (System on Module) is ready for development.</p>
+        <button type="submit" class="button-34" onclick="window.location.href='http://localhost:5000/choose_option'">
+            Begin Installation
+            <i class="fa-solid fa-arrow-right-long" style="color: #ffffff;"></i>
+        </button>
+    </div>
+</body>
+
+</html>

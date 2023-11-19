@@ -1,0 +1,76 @@
+<!-- templates/screen_4.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Package Installer for Jetson Nano - Installation Progress</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/screen_4.css') }}">
+    <script src="https://kit.fontawesome.com/928fde7a55.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <div class="wrapper">
+        <i class="fa-solid fa-truck-fast icon fa-5x"></i>
+        <h2>Installation in Progress</h2>
+        <progress id="progressBar" max="100" value="0"></progress>
+        <pre id="logArea"></pre>
+    </div>
+
+    <script>
+        window.onload = function () {
+            updateProgress();
+
+            fetch('/install_packages')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    console.log('Install packages route triggered successfully');
+                })
+                .catch(error => {
+                    console.error('Error triggering install packages route:', error);
+                });
+        };
+
+        function updateProgress() {
+            var progressBar = document.getElementById('progressBar');
+            var logArea = document.getElementById('logArea');
+            progressBar.value = 0;
+            logArea.textContent = '';
+    
+            var interval = setInterval(function () {
+                // Fetch progress from the server
+                fetch('/progress')
+                    .then(response => response.json())
+                    .then(data => {
+                        progressBar.value = data.progress;
+                         // Update the log area with the fetched content
+                        fetchLogContent();
+                    });
+    
+                if (progressBar.value >= 99) {
+                    clearInterval(interval);
+
+                    setTimeout(function () {
+                            window.location.href = '/sucess';
+                    }, 1000);
+                }
+            }, 2000);  // Update every 2 second
+        }
+    
+        function fetchLogContent() {
+            // Fetch the log content from the server
+            fetch('/log_content')
+                .then(response => response.text())
+                .then(data => {
+                    // Append the fetched content to the log area
+                    logArea.textContent += data;
+                });
+        }
+    </script>
+</body>
+</html>

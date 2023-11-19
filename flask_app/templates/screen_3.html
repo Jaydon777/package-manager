@@ -1,0 +1,44 @@
+<!-- templates/screen_3.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Package Installer for Jetson Nano - Required Packages</title>
+    
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/screen_3.css') }}">
+    <script src="https://kit.fontawesome.com/928fde7a55.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <a href="http://localhost:5000/choose_option" class="back-btn"><i class="fa-solid fa-arrow-right-long fa-rotate-180 fa-3x" style="color: #5e5df0;"></i></a>
+    <div class="wrapper">
+    <h2>Packages to be installed</h2>
+    {% if 'CV' in user_choices %}
+        <h3>Computer Vision</h3>
+        <ul>
+            <li>OpenCV - 3</li>
+            <li>Numpy - 1.17</li>
+            <li>Matplotlib - 3.5</li>
+            <li>Tensorflow - 2.10</li>
+            <li>Keras</li>
+        </ul>
+    {% endif %}
+    
+    {% if 'NLP' in user_choices %}
+        <h3>Natural Language Processing</h3>
+        <ul>
+            <li>NLTK</li>
+            <li>spaCy - 3.7.2</li>
+            <li>Tensorflow - 2.10</li>
+            <li>Keras</li>
+            <li>Pytorch</li>
+        </ul>
+    {% endif %}
+
+    <form method="post" action="{{ url_for('confirm_installation') }}">
+        <button type="submit" class="button-34">Confirm Installation</button>
+    </form>
+    </div>
+</body>
+</html>
