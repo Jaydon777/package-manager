@@ -46,8 +46,9 @@ def install_starting_packages():
     subprocess.run(['python3.7', '-m', 'venv', 'venv'])
 
     # Assuming the script is in the same folder as the venv folder
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    venv_path = os.path.join(script_dir, 'venv')
+    #script_dir = os.path.dirname(os.path.abspath(__file__))
+    #venv_path = os.path.join(script_dir, 'venv')
+    venv_path = 'venv'
 
     # Modify the PATH variable to include the virtual environment's bin directory
     os.environ['PATH'] = os.path.join(venv_path, 'bin') + os.pathsep + os.environ['PATH']
