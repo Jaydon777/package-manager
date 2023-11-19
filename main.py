@@ -44,10 +44,10 @@ def install_starting_packages():
 
     # Create a virtual environment named 'venv'
     subprocess.run(['python3.7', '-m', 'venv', 'venv'])
-    activate_script = os.path.join('venv', 'bin', 'activate') if os.name != 'nt' else os.path.join('venv', 'Scripts', 'activate')
+    # activate_script = os.path.join('venv', 'bin', 'activate') if os.name != 'nt' else os.path.join('venv', 'Scripts', 'activate')
 
     # Run the activation script using subprocess.run
-    subprocess.run(activate_script, shell=True)
+    # subprocess.run(activate_script, shell=True)
 
     # Assuming the script is in the same folder as the venv folder
     #script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -69,8 +69,8 @@ def install_starting_packages():
 
     # Check if gir1.2-webkit2-4.0 is installed
     if not is_package_installed('gir1.2-webkit2-4.0'):
-        subprocess.call(['sudo', 'apt-get', 'install', '-y', 'gir1.2-webkit2-4.0'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        #subprocess.call(['sudo', 'apt-get', 'install', 'gir1.2-webkit2-4.0'])
+        #subprocess.call(['sudo', 'apt-get', 'install', '-y', 'gir1.2-webkit2-4.0'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        subprocess.call(['sudo', 'apt-get', 'install', 'gir1.2-webkit2-4.0'])
         logging.info("Installed gir1.2-webkit2-4.0.")
     else:
         logging.info("gir1.2-webkit2-4.0 is already installed.")
