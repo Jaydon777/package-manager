@@ -28,7 +28,7 @@ def is_package_installed_pip(package_name):
 
 def install_python_37():
     # Add the deadsnakes PPA
-    subprocess.run(['sudo', 'add-apt-repository', 'ppa:deadsnakes/ppa'])
+    subprocess.run(['sudo', 'add-apt-repository', 'ppa:deadsnakes/ppa','-y'])
     # Update package information
     subprocess.run(['sudo', 'apt-get', 'update', '-y'])
     # Install Python 3.7
