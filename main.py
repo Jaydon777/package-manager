@@ -38,7 +38,7 @@ def install_starting_packages():
         install_python_37()
 
     # Create a virtual environment named 'venv'
-    subprocess.run(['python3.7', '-m', 'venv', 'venv'])
+    subprocess.run(['sudo','python3.7', '-m', 'venv', 'venv'])
 
     script_dir = os.path.dirname(os.path.abspath(__file__))
     venv_path = os.path.join(script_dir, 'venv')
