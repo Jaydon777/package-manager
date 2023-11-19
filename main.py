@@ -44,14 +44,20 @@ def install_starting_packages():
 
     # Create a virtual environment named 'venv'
     subprocess.run(['python3.7', '-m', 'venv', 'venv'])
+    activate_script = os.path.join('venv', 'bin', 'activate') if os.name != 'nt' else os.path.join('venv', 'Scripts', 'activate')
+
+    # Run the activation script using subprocess.run
+    subprocess.run(activate_script, shell=True)
 
     # Assuming the script is in the same folder as the venv folder
     #script_dir = os.path.dirname(os.path.abspath(__file__))
     #venv_path = os.path.join(script_dir, 'venv')
     venv_path = 'venv'
 
+
     # Modify the PATH variable to include the virtual environment's bin directory
     os.environ['PATH'] = os.path.join(venv_path, 'bin') + os.pathsep + os.environ['PATH']
+
 
     # Check if Flask is installed
     if not is_package_installed_pip('Flask'):
