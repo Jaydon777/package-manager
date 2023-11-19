@@ -33,8 +33,10 @@ def install_python_37():
     subprocess.run(['sudo', 'apt-get', 'update', '-y'])
     # Install Python 3.7
     subprocess.run(['sudo', 'apt-get', 'install', '-y', 'python3.7'])
+    subprocess.run(['sudo','python3.7', '-m', 'ensurepip', '--upgrade'])
 
 def install_starting_packages():
+    
 
     # Install python3.7-venv if not already installed
     if not is_package_installed('python3.7-venv'):
