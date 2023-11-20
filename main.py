@@ -27,24 +27,24 @@ def is_package_installed_pip(package_name):
         return False
 
 def install_python_37():
-    subprocess.run(['sudo', 'add-apt-repository', 'ppa:deadsnakes/ppa'])
-    subprocess.run(['sudo', 'apt-get', 'update'])
-    subprocess.run(['sudo', 'apt-get', 'install', 'python3.7'])
+    subprocess.run(['sudo', 'add-apt-repository', 'ppa:deadsnakes/ppa', '-y'])
+    subprocess.run(['sudo', 'apt-get', 'update', '-y'])
+    subprocess.run(['sudo', 'apt-get', 'install', '-y' ,'python3.7'])
 
 def install_starting_packages():
 
     # Install python3.7-venv if not already installed
-    if not is_package_installed('python3.7-venv'):
-        install_python_37()
+    # if not is_package_installed('python3.7-venv'):
+        # install_python_37()
 
     # Create a virtual environment named 'venv'
-    subprocess.run(['sudo','python3.7', '-m', 'venv', 'venv'])
+    # subprocess.run(['sudo','python3.7', '-m', 'venv', 'venv'])
 
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    venv_path = os.path.join(script_dir, 'venv')
+    # script_dir = os.path.dirname(os.path.abspath(__file__))
+    # venv_path = os.path.join(script_dir, 'venv')
 
     # Modify the PATH variable to include the virtual environment's bin directory
-    os.environ['PATH'] = os.path.join(venv_path, 'bin') + os.pathsep + os.environ['PATH']
+    # os.environ['PATH'] = os.path.join(venv_path, 'bin') + os.pathsep + os.environ['PATH']
 
     # Check if Flask is installed
     if not is_package_installed_pip('Flask'):
@@ -57,7 +57,7 @@ def install_starting_packages():
     # Check if gir1.2-webkit2-4.0 is installed
     if not is_package_installed('gir1.2-webkit2-4.0'):
         #subprocess.call(['sudo', 'apt-get', 'install', 'gir1.2-webkit2-4.0'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        subprocess.call(['sudo', 'apt-get', 'install', 'gir1.2-webkit2-4.0'])
+        subprocess.call(['sudo', 'apt-get', 'install', '-y' ,'gir1.2-webkit2-4.0'])
         logging.info("Installed gir1.2-webkit2-4.0.")
     else:
         logging.info("gir1.2-webkit2-4.0 is already installed.")

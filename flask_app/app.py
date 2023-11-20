@@ -13,7 +13,7 @@ installation_progress = 0
 def perform_cv_functionality(both_one):
     global installation_progress, log_content
     dependencies = [
-        "opencv-python==4.5.3.56",
+        # "opencv-python==4.5.3.56",
         "numpy==1.17",
         "matplotlib==3.5",
         "tensorflow==2.10",
@@ -29,7 +29,8 @@ def perform_cv_functionality(both_one):
             if both_one == 'both':
                 installation_progress += 8.33333
             elif both_one == 'one':
-                installation_progress += 20
+                # installation_progress += 20
+                installation_progress +=25
             # Pass the command to HTML
             log_content.append(f'Installing package: {dependency}\n')
     except Exception as e:
@@ -45,9 +46,9 @@ def perform_nlp_functionality(both_one):
         "spacy==3.7.2",
         "tensorflow==2.10",
         "keras==2.10",
-        "torch",
-        "torchvision",
-        "torchaudio"
+        # "torch",
+        # "torchvision",
+        # "torchaudio"
     ]
 
     try:
@@ -59,7 +60,8 @@ def perform_nlp_functionality(both_one):
             if(both_one == 'both'):
                 installation_progress += 8.33333
             elif(both_one == 'one'):
-                installation_progress += 14.285
+                # installation_progress += 14.285
+                installation_progress += 25
             # Pass the command to HTML
             log_content.append(f'Installing package: {dependency}\n')
     except Exception as e:
