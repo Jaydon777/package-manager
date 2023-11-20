@@ -63,8 +63,6 @@ def install_starting_packages():
         logging.info("gir1.2-webkit2-4.0 is already installed.")
 
 def run_flask_app():
-    # Set the FLASK_ENV environment variable to "production"
-    # os.environ['FLASK_ENV'] = 'production'
 
     # Run Flask in a separate process, capture stdout and stderr
     #result = subprocess.run(['python3', 'flask_app/app.py'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
