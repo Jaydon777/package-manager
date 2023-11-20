@@ -24,14 +24,17 @@ def perform_cv_functionality(both_one):
         for dependency in dependencies:
             install_command = ["pip3", "install", dependency]
             subprocess.run(install_command, check=True)
+            # Update the progress
             time.sleep(1)
             if both_one == 'both':
                 installation_progress += 8.33333
             elif both_one == 'one':
                 # installation_progress += 20
                 installation_progress +=25
+            # Pass the command to HTML
             log_content.append(f'Installing package: {dependency}\n')
     except Exception as e:
+        # Pass the failure message to HTML
         log_content.append(f'Installation failed: {str(e)}\n')
 
 
@@ -52,14 +55,17 @@ def perform_nlp_functionality(both_one):
         for dependency in dependencies:
             install_command = ["pip3", "install", dependency]
             subprocess.run(install_command, check=True)
+            # Update the progress
             time.sleep(1)
             if(both_one == 'both'):
                 installation_progress += 8.33333
             elif(both_one == 'one'):
                 # installation_progress += 14.285
                 installation_progress += 25
+            # Pass the command to HTML
             log_content.append(f'Installing package: {dependency}\n')
     except Exception as e:
+        # Pass the failure message to HTML
         log_content.append(f'Installation failed: {str(e)}\n')
 
 @app.route('/')
@@ -102,7 +108,7 @@ def sucess():
 def get_log_content():
     global log_content
     content = ''.join(log_content)
-    log_content = []
+    log_content = []  # Clear the content after fetching
     return content
 
 @app.route('/progress')
@@ -117,7 +123,7 @@ def manual_shutdown():
         shutdown_hook()
         return 'Server shutting down...'
     else:
-        os._exit(0)
+        os._exit(0)  # Terminate the process
         return 'Process terminated.'
 
 if __name__ == '__main__':
