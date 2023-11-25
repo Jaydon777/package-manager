@@ -34,22 +34,22 @@ def install_python_37():
 def install_starting_packages():
 
     # Install python3.7-venv if not already installed
-    # if not is_package_installed('python3.7-venv'):
-        # install_python_37()
+    if not is_package_installed('python3.7-venv'):
+        install_python_37()
 
-    # Create a virtual environment named 'venv'
-    # subprocess.run(['sudo','python3.7', '-m', 'venv', 'venv'])
+    # Create a virtual environment named 'dev_venv'
+    subprocess.run(['sudo','python3.7', '-m', 'venv', 'dev_venv'])
 
-    # script_dir = os.path.dirname(os.path.abspath(__file__))
-    # venv_path = os.path.join(script_dir, 'venv')
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    venv_path = os.path.join(script_dir, 'dev_venv')
 
     # Modify the PATH variable to include the virtual environment's bin directory
-    # os.environ['PATH'] = os.path.join(venv_path, 'bin') + os.pathsep + os.environ['PATH']
+    os.environ['PATH'] = os.path.join(venv_path, 'bin') + os.pathsep + os.environ['PATH']
 
     # Check if Flask is installed
     if not is_package_installed_pip('Flask'):
-        #subprocess.call(['python3', '-m', 'pip', 'install', 'flask[async]'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        subprocess.call(['python3', '-m', 'pip', 'install', 'flask[async]'])
+        #subprocess.call(['python3', '-m', 'pip', 'install', 'flask'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        subprocess.call(['python3', '-m', 'pip', 'install', 'flask'])
         logging.info("Installed Flask.")
     else:
         logging.info("Flask is already installed.")
